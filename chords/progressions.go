@@ -28,6 +28,9 @@ const (
 
 var CommonProgressions = [][]ChordInterval{
 	{I, IV, V},
+	{I, V, vi, IV},
+	{ii, V, I},
+	{I, vi, IV, V},
 }
 
 func Progression(mode scales.ModeName, intervals []ChordInterval, key notes.Note) ([]Chord, error) {
