@@ -32,14 +32,27 @@ func TestProgression(t *testing.T) {
 				{Root: notes.G.Name},
 			},
 		},
+		{
+			name: "C Major ii - V - I",
+			args: args{
+				mode:	scales.Ionian,
+				intervals: []ChordInterval{ii, V, I},
+				key: notes.C,
+			},
+			want: []Chord{
+				{Root: notes.D.Name},
+				{Root: notes.G.Name},
+				{Root: notes.C.Name},
+			},
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			progression, err := Progression(tt.args.mode, tt.args.intervals, tt.args.key)
 			assert.NoError(t, err)
-			assert.Equal(t, tt.want[0].Name, progression[0].Name)
-			assert.Equal(t, tt.want[1].Name, progression[1].Name)
-			assert.Equal(t, tt.want[2].Name, progression[2].Name)
+			assert.Equal(t, tt.want[0].Root, progression[0].Root)
+			assert.Equal(t, tt.want[1].Root, progression[1].Root)
+			assert.Equal(t, tt.want[2].Root, progression[2].Root)
 		})
 	}
 }

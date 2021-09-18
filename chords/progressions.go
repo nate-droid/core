@@ -43,18 +43,20 @@ func Progression(mode scales.ModeName, intervals []ChordInterval, key notes.Note
 	}
 
 	for _, interval := range intervals {
+		var chordType ChordType
+		if int(interval) > 0 {
+			chordType = MajorChord
+		} else {
+			chordType = MinorChord
+			interval = interval * -1
+		}
 		base := scale[interval-1]
 
 		// TODO start with only maj/min
 		// TODO need to get current
 		// TODO need to get scale from Mode
 		// chordTypes, err := GetChordQualitiesForScalePosition(int(ChordInterval), mode)
-		var chordType ChordType
-		if int(interval) > 0 {
-			chordType = MajorChord
-		} else {
-			chordType = MinorChord
-		}
+
 		chordNotes, err := GetChordTones(base, chordType)
 		if err != nil {
 			return nil, err
