@@ -12,6 +12,7 @@ type Chord struct {
 	Name      ChordType
 	Root      notes.Name
 	Intervals []Interval
+	Notes     []notes.Note
 }
 
 type ChordComponents struct {
@@ -59,7 +60,7 @@ func GetChordTones(note notes.Note, chordType ChordType) ([]notes.Note, error) {
 	components := ChordList[chordType]
 	for _, interval := range components {
 		nextToneIndex := note.Index + int(interval)
-		if nextToneIndex > len(notes.GetAllNotes()) {
+		if nextToneIndex >= len(notes.GetAllNotes()) {
 			nextToneIndex = nextToneIndex - len(notes.GetAllNotes())
 			tone, err := notes.FindIndex(nextToneIndex)
 			if err != nil {

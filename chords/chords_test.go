@@ -35,6 +35,14 @@ func TestGetChordTones(t *testing.T) {
 			},
 			want: []notes.Note{notes.G, notes.ASharp, notes.D},
 		},
+		{
+			name: "F Major Chord",
+			args: args{
+				note: notes.F,
+				chordType: MajorChord,
+			},
+			want: []notes.Note{notes.F, notes.A, notes.C},
+		},
 	}
 
 	for _, tt := range tests {
@@ -45,6 +53,9 @@ func TestGetChordTones(t *testing.T) {
 		})
 	}
 }
+// todo index F = 5
+// interval P5 7
+// index is 12
 
 func TestGetChordTypeForScalePosition(t *testing.T) {
 	type args struct {

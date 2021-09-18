@@ -11,16 +11,28 @@ type ChordInterval int
 // TODO add names of positions, ie Tonic, subdominant, etc...
 const (
 	I   ChordInterval = 1
+	i	ChordInterval = -1
 	II  ChordInterval = 2
+	ii	ChordInterval = -2
 	III ChordInterval = 3
+	iii ChordInterval = -3
 	IV  ChordInterval = 4
+	iv 	ChordInterval = -4
 	V   ChordInterval = 5
+	v	ChordInterval = -5
 	VI  ChordInterval = 6
+	vi 	ChordInterval = -6
 	VII ChordInterval = 7
+	vii ChordInterval = -7
 )
+
+var CommonProgressions = [][]ChordInterval{
+	{I, IV, V},
+}
 
 func Progression(mode scales.ModeName, intervals []ChordInterval, key notes.Note) ([]Chord, error) {
 	// get the scale
+	// intervals = I1, IV4, V5
 	var progression []Chord
 	scale, err := scales.GetMode(mode, key)
 	if err != nil {
@@ -34,10 +46,20 @@ func Progression(mode scales.ModeName, intervals []ChordInterval, key notes.Note
 		// TODO need to get current
 		// TODO need to get scale from Mode
 		// chordTypes, err := GetChordQualitiesForScalePosition(int(ChordInterval), mode)
-
+		var chordType ChordType
+		if int(interval) > 0 {
+			chordType = MajorChord
+		} else {
+			chordType = MinorChord
+		}
+		chordNotes, err := GetChordTones(base, chordType)
+		if err != nil {
+			return nil, err
+		}
 		chord := Chord{
-			Root: base.Name, // TODO add the next notes
-
+			Root: base.Name,
+			Name: chordType,
+			Notes: chordNotes,
 		}
 		// TODO calculate maj/min etc from scale degree
 		progression = append(progression, chord)
