@@ -22,6 +22,7 @@ type SongStructure struct {
 	ChordProgression []chords.ChordInterval
 	Mode             scales.ModeName
 	SymphonyID       string
+	Section
 }
 
 type Song struct {

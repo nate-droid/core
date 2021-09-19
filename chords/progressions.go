@@ -5,7 +5,6 @@ import (
 	"github.com/nate-droid/core/scales"
 )
 
-// TODO not in love with the name
 type ChordInterval int
 
 // TODO add names of positions, ie Tonic, subdominant, etc...
@@ -52,7 +51,6 @@ func Progression(mode scales.ModeName, intervals []ChordInterval, key notes.Note
 		}
 		base := scale[interval-1]
 
-		// TODO start with only maj/min
 		// TODO need to get current
 		// TODO need to get scale from Mode
 		// chordTypes, err := GetChordQualitiesForScalePosition(int(ChordInterval), mode)
@@ -66,10 +64,9 @@ func Progression(mode scales.ModeName, intervals []ChordInterval, key notes.Note
 			Name: chordType,
 			Notes: chordNotes,
 		}
-		// TODO calculate maj/min etc from scale degree
+
 		progression = append(progression, chord)
 	}
 
-	// todo add chord flavors
 	return progression, nil
 }

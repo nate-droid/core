@@ -85,9 +85,6 @@ var ModePatterns = map[ModeName][]int{
 	Locrian:    {Half, Whole, Whole, Half, Whole, Whole, Whole},
 }
 
-// TODO
-// TODO For each mode, display possible chords
-
 func GetMajorScale(scale notes.Note) (ModeList, error) {
 	var majorScale ModeList
 	pattern := []int{Whole, Whole, Half, Whole, Whole, Whole, Half}
@@ -117,8 +114,6 @@ func GetMajorScale(scale notes.Note) (ModeList, error) {
 	}
 	return majorScale, nil
 }
-
-// TODO Minor Scale But just use relative minors etc
 
 func GetMode(mode ModeName, startNote notes.Note) (ModeList, error) {
 	var modeList ModeList
