@@ -9,6 +9,7 @@ import (
 type Symphony struct {
 	SongStructure
 	Sections []Section
+	ID       string
 }
 
 type Section struct {
@@ -24,4 +25,6 @@ type SongStructure struct {
 
 type Song struct {
 	ChordProgression []chords.Chord
+	Section
+	SymphonyID string
 }

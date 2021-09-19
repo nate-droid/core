@@ -45,6 +45,20 @@ func TestProgression(t *testing.T) {
 				{Root: notes.C.Name},
 			},
 		},
+		{
+			name: "C Major I - vi - IV - V",
+			args: args{
+				mode: scales.Ionian,
+				intervals: []ChordInterval{I, vi, IV, V},
+				key: notes.C,
+			},
+			want: []Chord{
+				{Root: notes.C.Name},
+				{Root: notes.A.Name},
+				{Root: notes.F.Name},
+				{Root: notes.G.Name},
+			},
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
