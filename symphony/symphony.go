@@ -21,6 +21,7 @@ type SongStructure struct {
 	Key              notes.Note
 	ChordProgression []chords.ChordInterval
 	Mode             scales.ModeName
+	SymphonyID       string
 }
 
 type Song struct {
