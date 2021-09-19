@@ -26,6 +26,7 @@ type SongStructure struct {
 }
 
 type Song struct {
+	Progression []chords.ChordInterval
 	ChordProgression []chords.Chord
 	Section
 	SymphonyID string
